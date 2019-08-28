@@ -3,8 +3,8 @@
 
 class Ball{
   constructor(x, y, dx ,dy){
-    this.loc = createvector(x,y)
-    this.vel = createvector(dx,dy)
+    this.loc = createVector(x,y)
+    this.vel = createVector(dx,dy)
     this.clr = color(random(255),random(255), random(255), random(255))
   }
 
@@ -15,17 +15,17 @@ class Ball{
   }
 
   checkedges(){
-    if (this.loc(x) < 0){
-      this.vel(dx) = -this.vel(dx);
+    if (this.loc.x < 0){
+      this.vel.x = -this.vel.x;
     }
-    if (this.loc(x) > width){
-      this.vel(dx) = -this.vel(dx);
+    if (this.loc.x > width){
+      this.vel.x = -this.vel.x;
     }
-    if (this.loc(y) < 0){
-      this.vel(dy) = -this.vel(dy);
+    if (this.loc.y < 0){
+      this.vel.y = -this.vel.y;
     }
-    if (this.loc(y) > height){
-      this.vel(dy) = -this.vel(dy);
+    if (this.loc.y > height){
+      this.vel.y = -this.vel.y;
     }
   }
 
@@ -35,6 +35,6 @@ class Ball{
 
   render(){
     fill(this.clr);
-    ellipse(this.x, this.y, 50,50)
+    ellipse(this.loc.x, this.loc.y, 50,50)
   }
 }
