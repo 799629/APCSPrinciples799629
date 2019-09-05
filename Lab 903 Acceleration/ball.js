@@ -2,56 +2,59 @@
 //09/03/19
 //Attraction Repulsion
 class Ball{
-  constructor(x, y, dx, dy, w1, w2, id){
-    this.loc = createVector(x,y);
-    this.vel = createVector(dx,dy);
-    this.acc =createVector(random(-0.1,0.1));
+  constructor(x,y,dx,dy,id){
+    this.loc = createVector(x, y);
+    this.vel = createVector(dx, dy);
+    this.acc = createVector(0);
     this.clr = color(random(255),random(255),random(255));
-    this.w = random(w1,w2);
-    this.id=id;
-  }
+    this.w = 15;
+    this.id = id;
+    if(this.id < 0){this.w = 50;}
+  }//constructor end
   run(){
-    this.checkEdge();
+    this.checkEdges();
     this.update();
     this.render();
-  }
-  checkEdge(){
-    if(this.loc.x < 0){
-      this.vel.dx = -this.vel.dx;
-      this.loc=-this.loc;
-
-    }
-    if(this.loc.x > width){
-      this.vel.dx = -this.vel.dx;
-    }
-
-    if(this.loc.y < 0){
-      this.vel.dy = -this.vel.dy;
-    }
-
-    if(this.loc.y > height){
-      this.vel.dy = -this.vel.dy;
-    }
-
-  }
-
-  update(){
-    var distToMainBall;
-    distToMainBall = this.loc.dist(mainBall.loc);
-    this.vel.add(this.acc);
-    this.loc.add(this.vel);
-
-    if(distToMainBall>150){
-      this.acc= -this.acc
-    }
-    if(distToMainBall<150){
-      this.acc=-this.acc
-    }
-  }
-
+  }//run end
   render(){
     fill(this.clr);
-    ellipse(this.loc.x, this.loc.y, this.w, this.w);
-  }
+    ellipse(this.loc.x, this.loc.y, this.w, this.w)
+  }//render end
+  checkEdges(){
 
-}
+      if(this.loc.x < 0){
+        this.loc.x = width
+      }
+      if(this.loc.x > width){
+        this.loc.x = 0
+      }
+      if(this.loc.y < 0){
+        this.loc.y = height
+      }
+      if(this.loc.y > height){
+        this.loc.y = 0
+    }
+  }//checkEdges end
+  update(){
+    this.clr = color(random(255),random(255),random(255));
+    var distToMainball;
+    if(this.id >= 0){
+      distToMainball = this.loc.dist(mainBall.loc);
+      if(distToMainball < 100000){
+        //add attraction
+        this.acc = p5.Vector.sub(mainBall.loc, this.loc);
+        this.acc.normalize();
+        this.acc.mult(0.1);
+      }
+      if(distToMainball < 150){
+        //add repulsion
+        this.acc = p5.Vector.sub(this.loc, mainBall.loc);
+        this.acc.normalize();
+        this.acc.mult(0.5);
+      }
+      this.vel.add(this.acc);
+    }
+    this.loc.add(this.vel);
+    this.vel.limit(5);
+  }//update end
+}//Class end
