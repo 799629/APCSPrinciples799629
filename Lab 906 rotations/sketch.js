@@ -18,22 +18,28 @@ function setup() {
 function draw() {
   background(5, 5, 5, 20);
   runBalls();
+  runShips();
 }
 function loadBalls(n){
   attractor = new Ball(width/2, height/2, random(-2,2), random(-2,2), -1)
   repeller = new Ball(width/2, height/2, random(-2,2), random(-2,2), -1)
   for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(width), random(height), random(-1, 1), random(-1, 1), i);
+    ships[i] = new Ship(random(width), random(height), random(-1, 1), random(-1, 1), i);
   }
 }//loads balls into array
 function runBalls(){
   attractor.run();
   repeller.run();
-  for(var i = 0; i < balls.length; i++){
-    balls[i].run();
-  }
 }//runs the balls
 
-function runShips(){
-  ships.run();
+function loadShips(n){
+  for(var i = 0; i < n; i++){
+    ships[i] = new Ship(random(width), random(height), random(-1, 1), random(-1, 1), i);
+  }
 }
+
+function runShips(){
+  for(var i = 0; i < ships.length; i++){
+    ships[i].run();
+  }
+}//runs the ships

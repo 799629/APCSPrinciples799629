@@ -13,11 +13,13 @@ run(){
   this.update();
   this.render();
 }//run end
+
 render(){
   fill(this.clr);
   push();
-    translate(this.x,this.y);
-    rotate(this.angle);
+    translate(5,5);
+
+    rotate(this.loc.heading);
     triangle(-5,8,5,8,0,-8)
   pop();
 }//render end
@@ -40,18 +42,18 @@ checkEdges(){
 
 update(){
   this.clr = color(random(255),random(255),random(255));
-  var distToMainball;
+  var disttoattractor;
   if(this.id >= 0){
-    distToMainball = this.loc.dist(mainBall.loc);
-    if(distToMainball < 100000){
+    disttoattractor = this.loc.dist(attractor.loc);
+    if(distToattractor < 100000){
       //add attraction
-      this.acc = p5.Vector.sub(mainBall.loc, this.loc);
+      this.acc = p5.Vector.sub(attractor.loc, this.loc);
       this.acc.normalize();
       this.acc.mult(0.1);
     }
-    if(distToMainball < 150){
+    if(disttoattractor < 150){
       //add repulsion
-      this.acc = p5.Vector.sub(this.loc, mainBall.loc);
+      this.acc = p5.Vector.sub(this.loc, attractor.loc);
       this.acc.normalize();
       this.acc.mult(0.5);
     }
