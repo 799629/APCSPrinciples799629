@@ -1,6 +1,5 @@
 //  Kawika Tu
 // 	9/5/19
-//  This is a comment
 //  The setup function function is called once when your program begins
 var ships = [];
 var attractor;
@@ -11,8 +10,6 @@ function setup() {
   background(5, 5, 5);
   fill(200, 30, 150);
   loadBalls(100);
-
-
 }
 
 //  The draw function is called @ 30 fps

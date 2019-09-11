@@ -40,24 +40,26 @@ checkEdges(){
 }//checkEdges end
 
 update(){
-  this.clr = color(random(255),random(255),random(255));
-  var disttoattractor;
+  var distToattractor;
+  var distTorepeller;
+  distToattractor = this.loc.dist(attractor.loc);
+  distTorepeller = this.loc.dist(repeller.loc);
   if(this.id >= 0){
-    disttoattractor = this.loc.dist(attractor.loc);
     if(distToattractor < 100000){
       //add attraction
       this.acc = p5.Vector.sub(attractor.loc, this.loc);
       this.acc.normalize();
       this.acc.mult(0.1);
     }
-    if(disttoattractor < 150){
+    if(distTorepeller < 150){
       //add repulsion
-      this.acc = p5.Vector.sub(this.loc, attractor.loc);
+      this.acc = p5.Vector.sub(this.loc, repeller.loc);
       this.acc.normalize();
       this.acc.mult(0.5);
     }
     this.vel.add(this.acc);
   }
+  this.vel.add(this.acc);
   this.loc.add(this.vel);
   this.vel.limit(5);
 }//update end

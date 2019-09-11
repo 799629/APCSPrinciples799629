@@ -36,25 +36,27 @@ class Ball{
     }
   }//checkEdges end
   update(){
-    this.clr = color(random(255),random(255),random(255));
-    var attractor;
+    var distToattractor;
+    var distTorepeller;
+    distToattractor = this.loc.dist(attractor.loc);
+    distTorepeller = this.loc.dist(repeller.loc);
     if(this.id >= 0){
-      distto sttractor = this.loc.dist(mainBall.loc);
-      if(disttoattractor < 100000){
+      if(distToattractor < 100000){
         //add attraction
-        this.acc = p5.Vector.sub(mainBall.loc, this.loc);
+        this.acc = p5.Vector.sub(attractor.loc, this.loc);
         this.acc.normalize();
-        this.acc.mult(0.1)
+        this.acc.mult(0.1);
       }
-      if(disttoattractor < 150){
+      if(distTorepeller < 150){
         //add repulsion
-        this.acc = p5.Vector.sub(this.loc, mainBall.loc);
+        this.acc = p5.Vector.sub(this.loc, repeller.loc);
         this.acc.normalize();
         this.acc.mult(0.5);
       }
       this.vel.add(this.acc);
     }
+    this.vel.add(this.acc);
     this.loc.add(this.vel);
     this.vel.limit(5);
   }//update end
-}//Class end
+  }//Class end
