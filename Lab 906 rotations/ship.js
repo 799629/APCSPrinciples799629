@@ -18,7 +18,6 @@ render(){
   fill(this.clr);
   push();
     translate(5,5);
-
     rotate(this.loc.heading);
     triangle(-5,8,5,8,0,-8)
   pop();

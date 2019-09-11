@@ -3,7 +3,8 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var ships = [];
-var attractor,repeller;
+var attractor;
+var repeller;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
