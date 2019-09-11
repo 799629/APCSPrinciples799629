@@ -37,16 +37,16 @@ class Ball{
   }//checkEdges end
   update(){
     this.clr = color(random(255),random(255),random(255));
-    var distToMainball;
+    var attractor;
     if(this.id >= 0){
-      distToMainball = this.loc.dist(mainBall.loc);
-      if(distToMainball < 100000){
+      distto sttractor = this.loc.dist(mainBall.loc);
+      if(disttoattractor < 100000){
         //add attraction
         this.acc = p5.Vector.sub(mainBall.loc, this.loc);
         this.acc.normalize();
-        this.acc.mult(0.1);
+        this.acc.mult(0.1)
       }
-      if(distToMainball < 150){
+      if(disttoattractor < 150){
         //add repulsion
         this.acc = p5.Vector.sub(this.loc, mainBall.loc);
         this.acc.normalize();
