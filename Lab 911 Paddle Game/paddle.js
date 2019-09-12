@@ -1,15 +1,10 @@
 //Kawika Tu
 //09/03/19
 //Attraction Repulsion
-class Ball{
-  constructor(x,y,dx,dy,id){
-    this.loc = createVector(x, y);
-    this.vel = createVector(dx, dy);
-    this.acc = createVector(0);
+class Paddle{
+  constructor(x,y){
+
     this.clr = color(random(255),random(255),random(255));
-    this.w = 15;
-    this.id = id;
-    if(this.id < 0){this.w = 50;}
   }//constructor end
   run(){
     this.checkEdges();
@@ -35,7 +30,8 @@ class Ball{
         this.loc.y = 0
     }
   }//checkEdges end
-  update(){
-    
+  this.update = function(){
+    var mouseLoc = createVector(mouseX,mouseY);
+    this.loc = p5.Vector.lerp(this.loc,mouseLoc,0.09)
   }
   }//Class end

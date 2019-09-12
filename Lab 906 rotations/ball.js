@@ -41,7 +41,7 @@ class Ball{
     distToattractor = this.loc.dist(attractor.loc);
     distTorepeller = this.loc.dist(repeller.loc);
     if(this.id >= 0){
-      if(distToattractor < 100000){
+      if(distToattractor < 250){
         //add attraction
         this.acc = p5.Vector.sub(attractor.loc, this.loc);
         this.acc.normalize();
@@ -55,8 +55,36 @@ class Ball{
       }
       this.vel.add(this.acc);
     }
-    this.vel.add(this.acc);
+    if(this.id < 0){
+      if(distToattractor < 400){
+        //add attraction
+        this.acc = p5.Vector.sub(attractor.loc, this.loc);
+        this.acc.normalize();
+        this.acc.mult(0.1);
+      }
+      if(distToattractor < 100){
+        //add repulsion
+        this.acc = p5.Vector.sub(this.loc, attractor.loc);
+        this.acc.normalize();
+        this.acc.mult(0.5);
+      }
+      this.vel.add(this.acc);
+    }
+    if(this.id < 0){
+      if(distTorepeller < 300){
+        //add attraction
+        this.acc = p5.Vector.sub(repeller.loc, this.loc);
+        this.acc.normalize();
+        this.acc.mult(0.1);
+      }
+      if(distTorepeller < 100){
+        //add repulsion
+        this.acc = p5.Vector.sub(this.loc, repeller.loc);
+        this.acc.normalize();
+        this.acc.mult(0.5);
+      }
+      this.vel.add(this.acc);
+    }
     this.loc.add(this.vel);
-    this.vel.limit(5);
   }//update end
   }//Class end
