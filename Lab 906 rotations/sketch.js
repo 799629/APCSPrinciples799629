@@ -10,7 +10,7 @@ function setup() {
   background(5, 5, 5);
   fill(200, 30, 150);
   loadBalls();
-  loadShips(100)
+  loadShips(100);
 }
 
 //  The draw function is called @ 30 fps

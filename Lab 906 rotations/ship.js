@@ -17,8 +17,8 @@ run(){
 render(){
   fill(this.clr);
   push();
-    translate(5,5);
-    rotate(this.angle);
+    translate(this.loc.x,this.loc.y);
+    rotate(this.angle+HALF_PI);
     triangle(-5,8,5,8,0,-8)
   pop();
 }//render end
@@ -62,5 +62,6 @@ update(){
   this.vel.add(this.acc);
   this.loc.add(this.vel);
   this.vel.limit(5);
+  this.angle = this.vel.heading()
 }//update end
 }//Class end

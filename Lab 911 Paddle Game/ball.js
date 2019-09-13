@@ -2,14 +2,12 @@
 //09/03/19
 //Attraction Repulsion
 class Ball{
-  constructor(x,y,dx,dy,id){
+  constructor(x,y,dx,dy){
     this.loc = createVector(x, y);
     this.vel = createVector(dx, dy);
     this.acc = createVector(0);
     this.clr = color(random(255),random(255),random(255));
     this.w = 15;
-    this.id = id;
-    if(this.id < 0){this.w = 50;}
   }//constructor end
   run(){
     this.checkEdges();
@@ -23,19 +21,21 @@ class Ball{
   checkEdges(){
 
       if(this.loc.x < 0){
-        this.loc.x = width
+        this.vel.dx = -1*this.vel.dx
       }
       if(this.loc.x > width){
-        this.loc.x = 0
+        this.vel.dx = -1*this.vel.dx
       }
       if(this.loc.y < 0){
-        this.loc.y = height
+        this.vel.dy = -1*this.vel.dy
       }
       if(this.loc.y > height){
-        this.loc.y = 0
+        this.loc.x = 0
     }
   }//checkEdges end
   update(){
-    
+    this.x = this.x+this.vel;
+    this.y = this.y+this.vel;
+
   }
   }//Class end

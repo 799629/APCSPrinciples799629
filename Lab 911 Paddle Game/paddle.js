@@ -2,8 +2,11 @@
 //09/03/19
 //Attraction Repulsion
 class Paddle{
-  constructor(x,y){
-
+  constructor(x,y,h,w){
+    this.loc = createVector(x,y)
+    this.clr = color(random(255),random(255),random(255));
+    this.h = h
+    this.w = w
     this.clr = color(random(255),random(255),random(255));
   }//constructor end
   run(){
@@ -13,7 +16,6 @@ class Paddle{
   }//run end
   render(){
     fill(this.clr);
-    ellipse(this.loc.x, this.loc.y, this.w, this.w)
   }//render end
   checkEdges(){
 
@@ -30,8 +32,9 @@ class Paddle{
         this.loc.y = 0
     }
   }//checkEdges end
-  this.update = function(){
+  update(){
     var mouseLoc = createVector(mouseX,mouseY);
     this.loc = p5.Vector.lerp(this.loc,mouseLoc,0.09)
+    rect(this.loc.x,this.loc.y,this.h,this.w)
   }
   }//Class end
