@@ -31,11 +31,20 @@ class Ball{
       }
       if(this.loc.y > height){
         this.loc.x = 0
+      }
+      //if(750<this.loc.y<800){
+          //this.score= this.score +1
+        //}
+      //if(this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h){
+        //this.vel.y = -this.vel.y
+    //}
     }
-  }//checkEdges end
+  //checkEdges end
   update(){
-    this.x = this.x+this.vel;
-    this.y = this.y+this.vel;
-
+    this.vel.add(this.acc);
+    this.loc.add(this.vel);
+    textSize(32);
+    text(this.score, 10, 30);
+    fill(0, 102, 153);
   }
   }//Class end

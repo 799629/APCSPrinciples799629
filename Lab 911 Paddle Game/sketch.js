@@ -27,5 +27,5 @@ function loadObjects(n){
 
 function runObjects(){
   paddle.run();
-  ball.run();
+  balls.run();
 }
