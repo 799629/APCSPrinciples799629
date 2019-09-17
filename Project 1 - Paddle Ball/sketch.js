@@ -5,29 +5,42 @@ var balls = [];
 var paddle;
 var score = 0
 var health;
+var gameState = 2;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-  loadObjects(6);
   score = 0
 }
 
 //  The draw function is called @ 30 fps
 function draw() {
-  background(5, 5, 5, 20);
-  runObjects();
+  if(gameState===1){
+    startGame()
+  }
+  else if(gameState===2){
+    playGame()
+  }
+  else if(gameState===3){
+    endGame
+  }
 }
 
-function loadObjects(n){
+function playGame(d){
+  background(5, 5, 5, 20);
+  loadGame(6);
+  runGame();
+}
+
+function loadGame(n){
   paddle = new Paddle(200,700,200,30)
   for(var i = 0; i < n; i++){
     balls[i] = new Ball(random(width),random(0,300),random(-5,5),random(-5,5))
   }
 }
 
-function runObjects(){
+function runGame(){
   paddle.run();
   for(var i = 0; i < balls.length; i++){
     balls[i].run();

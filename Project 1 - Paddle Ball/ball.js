@@ -2,7 +2,7 @@
 //09/03/19
 //Attraction Repulsion
 class Ball{
-  constructor(x,y,dx,dy){
+  constructor(x,y,dx,dy,i){
     this.loc = createVector(x, y);
     this.vel = createVector(dx, dy);
     this.acc = createVector(0,0.1);
