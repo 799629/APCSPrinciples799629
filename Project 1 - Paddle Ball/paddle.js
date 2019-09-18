@@ -31,7 +31,7 @@ class Paddle{
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
     this.score = score
     textSize(32);
-    text("Score = " + this.score, 10, 30);
     fill(0, 102, 153);
+    text("Score = " + this.score, 10, 30);
   }
   }//Class end

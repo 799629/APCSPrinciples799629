@@ -4,13 +4,15 @@
 var balls = [];
 var paddle;
 var score = 0
-var health;
+var health = 100;
+var loadonce = 0
 var gameState = 2;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
+  loadGame(6)
   score = 0
 }
 
@@ -23,13 +25,12 @@ function draw() {
     playGame()
   }
   else if(gameState===3){
-    endGame
+    endGame()
   }
 }
 
 function playGame(d){
   background(5, 5, 5, 20);
-  loadGame(6);
   runGame();
 }
 

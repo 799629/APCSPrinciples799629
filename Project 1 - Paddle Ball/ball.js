@@ -32,7 +32,7 @@ class Ball{
       if(this.loc.y > height){
         this.vel.y = -this.vel.y
       }
-      if(this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h){
+      if(this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h && this.vel.y > 0){
         this.vel.y = -this.vel.y
         score = score + 1
       }
