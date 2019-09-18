@@ -19,7 +19,7 @@ function setup() {
 //  The draw function is called @ 30 fps
 function draw() {
   if(gameState===1){
-    startGame()
+    startscreen()
   }
   else if(gameState===2){
     playGame()
@@ -27,6 +27,10 @@ function draw() {
   else if(gameState===3){
     endGame()
   }
+}
+
+function startscreen(){
+
 }
 
 function playGame(d){

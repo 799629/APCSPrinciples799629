@@ -13,6 +13,7 @@ class Ball{
     this.checkEdges();
     this.update();
     this.render();
+    this.removeBall();
   }//run end
   render(){
     fill(this.clr);
@@ -20,24 +21,38 @@ class Ball{
   }//render end
   checkEdges(){
 
-      if(this.loc.x < 0){
-        this.vel.x = -1*this.vel.x
+    if(this.loc.x < 0){
+      this.vel.x = -1*this.vel.x
+    }
+    if(this.loc.x > width){
+      this.vel.x = -1*this.vel.x
+    }
+    if(this.loc.y < 0){
+      this.vel.y = -1*this.vel.y
+    }
+    if(this.loc.y > height){
+      this.vel.y = -this.vel.y
+    }
+    if(this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h && this.vel.y > 0){
+      this.vel.y = -this.vel.y
+      score = score + 1
+    }
+  }//checkEdges end
+
+  isColliding(){
+    if(this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h && this.vel.y < 0){
+      return true;
+    }
+  }//isColliding end
+
+  removeBall(){
+    for(var i = balls.length - 1; i >= 0; i--){
+      if(balls[i].isColliding()){
+        balls.splice(i,1)
       }
-      if(this.loc.x > width){
-        this.vel.x = -1*this.vel.x
-      }
-      if(this.loc.y < 0){
-        this.vel.y = -1*this.vel.y
-      }
-      if(this.loc.y > height){
-        this.vel.y = -this.vel.y
-      }
-      if(this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h && this.vel.y > 0){
-        this.vel.y = -this.vel.y
-        score = score + 1
-      }
+    }
   }
-  //checkEdges end
+
   update(){
     this.vel.add(this.acc);
     this.loc.add(this.vel);
