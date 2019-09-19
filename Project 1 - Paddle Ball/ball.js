@@ -37,6 +37,9 @@ class Ball{
       this.vel.y = -this.vel.y
       score = score + 1
     }
+    if(this.loc.y > 820){
+      this.loc.y = 1
+    }
   }//checkEdges end
 
   isColliding(){

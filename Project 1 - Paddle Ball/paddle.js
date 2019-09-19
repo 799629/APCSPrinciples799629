@@ -28,7 +28,7 @@ class Paddle{
   }//checkEdges end
   update(){
     var mouseLoc = createVector(mouseX, 700);
-    this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
+    this.loc = p5.Vector.lerp(this.loc, mouseLoc, .5);
     this.score = score
     textSize(32);
     fill(0, 102, 153);
