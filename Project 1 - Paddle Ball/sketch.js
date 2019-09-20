@@ -3,11 +3,12 @@
 //  The setup function function is called once when your program begins
 var balls = [];
 var paddle;
-var button = [];
-var score = 0
+var buttons = [];
+var score = 0;
+var m = 1;
 var health = 100;
 var loadonce = 0
-var gameState = 2;
+var gameState = 1;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -33,8 +34,12 @@ function draw() {
 function startscreen(){
   for(var i = 0; i < buttons.length; i++){
     buttons[i].run();
+  }
+  textAlign(CENTER);
+  textSize(60);
+  fill(255);
+  text("Welcome to Paddleball", 400, 300);
 }
-
 function playGame(d){
   background(5, 5, 5, 20);
   runGame();
@@ -46,7 +51,7 @@ function loadObjects(n){
     balls[i] = new Ball(random(width),random(0,300),random(-5,5),random(-5,5))
   }
   for(var i = 0; i < 3; i++){
-    button[i] = new Button(i);
+    buttons[i] = new Button(i);
   }
 }
 
