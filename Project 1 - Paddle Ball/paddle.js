@@ -10,11 +10,12 @@ class Paddle{
     this.health = health
   }//constructor end
   run(){
-    this.checkEdges();
     this.update();
+    this.checkEdges();
     this.render();
   }//run end
   render(){
+    rectMode(CORNER)
     fill(this.clr);
     rect(this.loc.x,this.loc.y,this.w,this.h)
   }//render end
@@ -22,12 +23,12 @@ class Paddle{
     if (this.loc.x < -1){
       this.loc.x  = 1
     }
-    if(this.loc.x > 801-this.w){
+    if(this.loc.x > 801 - this.w){
       this.loc.x = 800 - this.w
     }
   }//checkEdges end
   update(){
-    var mouseLoc = createVector(mouseX, 700);
+    var mouseLoc = createVector((mouseX-this.w/2), this.loc.y);
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .5);
     this.score = score
     textSize(32);
