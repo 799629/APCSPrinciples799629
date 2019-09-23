@@ -5,10 +5,10 @@ var balls = [];
 var paddle;
 var buttons = [];
 var score = 0;
-var m = 1;
 var health = 100;
 var loadonce = 0
 var gameState = 1;
+var gameMode = 0;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -38,7 +38,7 @@ function startscreen(){
   textAlign(CENTER);
   textSize(60);
   fill(255);
-  text("Welcome to Paddleball", 400, 300);
+  text("Paddle-ball", 400, 300);
 }
 function playGame(d){
   background(5, 5, 5, 20);
