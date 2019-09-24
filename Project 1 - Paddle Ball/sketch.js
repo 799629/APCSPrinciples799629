@@ -6,9 +6,11 @@ var paddle;
 var buttons = [];
 var score = 0;
 var health = 100;
-var loadonce = 0
+var loadonce = 0;
 var gameState = 1;
 var gameMode = 0;
+var gameTimer = 10;
+var highscore = [];
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -59,5 +61,19 @@ function runGame(){
   paddle.run();
   for(var i = 0; i < balls.length; i++){
     balls[i].run();
+  }
+}
+
+function endGame(){
+  append(highscore,score)
+  background(5, 5, 5);
+  fill(200, 30, 150);
+  score = 0
+  textAlign(CENTER);
+  textSize(60);
+  fill(255);
+  text("You Lost", 400, 300);
+  for(var i = 0; i < 1; i++){
+    buttons[i+3] = new Button(i+3);
   }
 }

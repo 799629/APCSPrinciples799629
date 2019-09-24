@@ -44,21 +44,25 @@ class Ball{
 
   isColliding(){
     if(this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h && this.vel.y < 0){
+      health = health - 1
       return true;
-    }
+    }//if statement end
   }//isColliding end
 
   removeBall(){
     for(var i = balls.length - 1; i >= 0; i--){
       if(balls[i].isColliding()){
         balls.splice(i,1)
-        health = health - 1
-      }
-    }
-  }
+        if(balls.length === 0){
+          gameState = 3
+          gameTimer = 10
+        }
+      }//if statament end
+    }//for loop end
+  }//removeBall end
 
   update(){
     this.vel.add(this.acc);
     this.loc.add(this.vel);
-  }
+  }//update end
   }//Class end

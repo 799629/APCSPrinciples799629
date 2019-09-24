@@ -27,7 +27,7 @@ class Button{
     fill(this.textclr);
     text(this.text, this.x, this.y + this.h/4);
   }//creates button object
-  idCheck(){
+  idCheck(){//defines location, text, and color of the button based on id number
     if(this.id === 0){
       this.y = 500
       this.x = 200
@@ -46,7 +46,12 @@ class Button{
       this.clr = color(255, 0, 0);
       this.text = "Hard"
       this.ballnumber = this.ballnumber+3
-    }//defines location, text, and color of the button based on id number
+    }else if(this.id ===3){
+      this.y = 500
+      this.x = 200
+      this.clr = color(0, 255, 0);
+      this.text = "Play Again"
+    }
   }
   mouseCheck(){
     if(mouseX > this.x - this.w/2 && mouseX < this.x + this.w/2 && mouseY > this.y - this.h/2 && mouseY < this.y + this.h/2 && mouseIsPressed){
