@@ -53,7 +53,7 @@ function loadObjects(n){
   for(var i = 0; i < n; i++){
     balls[i] = new Ball(random(width),random(0,300),random(-5,5),random(-5,5))
   }
-  buttonEasy = new Button(200,500,180,90,"Easy",color(0, 255, 0))
+  buttonEasy = new Button(200,500,180,90,"Easy",color(0, 255, 0),)
   buttonMedium = new Button(400,500,180,90,"Medium",color(244, 232, 104))
   buttonHard = new Button(600,500,180,90,"Hard",color(255, 0, 0))
   buttonRules = new Button(400,600,180,90,"Rules",color(255))

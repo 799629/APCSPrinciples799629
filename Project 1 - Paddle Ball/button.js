@@ -2,13 +2,14 @@
 //09/03/19
 //Attraction Repulsion
 class Button{
-  constructor(x, y, w, h, text, clr){
+  constructor(x, y, w, h, text, clr, id){
     this.loc = createVector(x,y)
     this.w = w
     this.h = h
     this.clr = clr
     this.textclr = color(0);
     this.text = text
+    this.id = id
   }
   run(){
     this.render();
@@ -26,7 +27,9 @@ class Button{
 
   mouseCheck(){
     if(mouseX > this.loc.x - this.w/2 && mouseX < this.loc.x + this.w/2 && mouseY > this.loc.y - this.h/2 && mouseY < this.loc.y + this.h/2 && mouseIsPressed){
-      gameState = 2
+      if( && this.id = 0){
+        gameState = 2
+      }
     }//starts the game when a button is pressed
   }//end of mouseCheck
 }//End of Class
