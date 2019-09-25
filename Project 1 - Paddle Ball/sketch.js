@@ -11,6 +11,9 @@ var gameState = 1;
 var gameMode = 0;
 var gameTimer = 10;
 var highscore = [];
+var buttonEasy
+var buttonMedium
+var buttonHard
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -24,19 +27,17 @@ function setup() {
 function draw() {
   if(gameState===1){
     startscreen()
-  }
-  else if(gameState===2){
+  }else if(gameState===2){
     playGame()
-  }
-  else if(gameState===3){
+  }else if(gameState===3){
     endGame()
+  }else if(gamestate===4){
+
   }
 }
 
 function startscreen(){
-  for(var i = 0; i < buttons.length; i++){
-    buttons[i].run();
-  }
+  runButtons()
   textAlign(CENTER);
   textSize(60);
   fill(255);
@@ -52,9 +53,16 @@ function loadObjects(n){
   for(var i = 0; i < n; i++){
     balls[i] = new Ball(random(width),random(0,300),random(-5,5),random(-5,5))
   }
-  for(var i = 0; i < 3; i++){
-    buttons[i] = new Button(i);
-  }
+  buttonEasy = new Button(200,500,180,90,"Easy",color(0, 255, 0))
+  buttonMedium = new Button(400,500,180,90,"Medium",color(244, 232, 104))
+  buttonHard = new Button(600,500,180,90,"Hard",color(255, 0, 0))
+  buttonRules = new Button(400,600,180,90,"Rules",color(255))
+}
+
+function runButtons(){
+  buttonEasy.run()
+  buttonMedium.run()
+  buttonHard.run()
 }
 
 function runGame(){
@@ -73,7 +81,10 @@ function endGame(){
   textSize(60);
   fill(255);
   text("You Lost", 400, 300);
-  for(var i = 0; i < 1; i++){
-    buttons[i+3] = new Button(i+3);
-  }
+  textSize(45);
+  fill(255);
+  text("Try again", 400, 375);
+  buttonEasy.run()
+  buttonMedium.run()
+  buttonHard.run()
 }
