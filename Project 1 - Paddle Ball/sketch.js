@@ -52,7 +52,7 @@ function playGame(){
 function loadObjects(n){
   paddle = new Paddle(200,700,200,30)
   for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(width),random(0,300),random(-5,5),random(-5,5))
+    balls[i] = new Ball(random(width),random(0,300),random(-5,5),random(-5,5),i)
   }
   buttonEasy = new Button(200,500,180,90,"Easy",color(0, 255, 0),0)
   buttonMedium = new Button(400,500,180,90,"Medium",color(244, 232, 104),1)
