@@ -53,9 +53,13 @@ class Ball{
     for(var i = balls.length - 1; i >= 0; i--){
       if(balls[i].isColliding()){
         balls.splice(i,1)
-        if(balls.length === 0){
+        if(health < 1){
           gameState = 3
           gameTimer = 10
+        }else if(balls.length < 1){
+          startingBalls++
+          loadonce = 0
+          gameState = 2
         }
       }//if statament end
     }//for loop end

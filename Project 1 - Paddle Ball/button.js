@@ -27,7 +27,17 @@ class Button{
 
   mouseCheck(){
     if(mouseX > this.loc.x - this.w/2 && mouseX < this.loc.x + this.w/2 && mouseY > this.loc.y - this.h/2 && mouseY < this.loc.y + this.h/2 && mouseIsPressed){
-      if( && this.id = 0){
+      if(this.id === 0){
+        startingBalls = 3
+        loadonce = 0
+        gameState = 2
+      }else if(this.id === 1){
+        startingBalls = 6
+        loadonce = 0
+        gameState = 2
+      }else if(this.id === 2){
+        startingBalls = 9
+        loadonce = 0
         gameState = 2
       }
     }//starts the game when a button is pressed

@@ -5,12 +5,13 @@ var balls = [];
 var paddle;
 var buttons = [];
 var score = 0;
-var health = 100;
+var health = 10;
 var loadonce = 0;
 var gameState = 1;
 var gameMode = 0;
 var gameTimer = 10;
 var highscore = [];
+var startingBalls = 3
 var buttonEasy
 var buttonMedium
 var buttonHard
@@ -43,7 +44,7 @@ function startscreen(){
   fill(255);
   text("Paddle-ball", 400, 300);
 }
-function playGame(d){
+function playGame(){
   background(5, 5, 5, 20);
   runGame();
 }
@@ -53,10 +54,10 @@ function loadObjects(n){
   for(var i = 0; i < n; i++){
     balls[i] = new Ball(random(width),random(0,300),random(-5,5),random(-5,5))
   }
-  buttonEasy = new Button(200,500,180,90,"Easy",color(0, 255, 0),)
-  buttonMedium = new Button(400,500,180,90,"Medium",color(244, 232, 104))
-  buttonHard = new Button(600,500,180,90,"Hard",color(255, 0, 0))
-  buttonRules = new Button(400,600,180,90,"Rules",color(255))
+  buttonEasy = new Button(200,500,180,90,"Easy",color(0, 255, 0),0)
+  buttonMedium = new Button(400,500,180,90,"Medium",color(244, 232, 104),1)
+  buttonHard = new Button(600,500,180,90,"Hard",color(255, 0, 0),2)
+  buttonRules = new Button(400,600,180,90,"Rules",color(255),3)
 }
 
 function runButtons(){
@@ -66,9 +67,19 @@ function runButtons(){
 }
 
 function runGame(){
+  if(loadonce === 0){
+    startGame(startingBalls)
+    loadonce = 1
+  }
   paddle.run();
   for(var i = 0; i < balls.length; i++){
     balls[i].run();
+  }
+}
+
+function startGame(n){
+  for(var i = 0; i < n; i++){
+    balls[i] = new Ball(random(width),random(0,300),random(-5,5),random(-5,5))
   }
 }
 
@@ -87,4 +98,5 @@ function endGame(){
   buttonEasy.run()
   buttonMedium.run()
   buttonHard.run()
+  health = 10
 }
