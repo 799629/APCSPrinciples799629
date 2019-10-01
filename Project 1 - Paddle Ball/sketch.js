@@ -12,6 +12,7 @@ var gameMode = 0;
 var gameTimer = 10;
 var highscore = [];
 var startingBalls = 3
+var highscore = 0
 var buttonEasy
 var trackingspeed = .09
 var buttonMedium
@@ -33,8 +34,8 @@ function draw() {
     playGame()
   }else if(gameState===3){
     endGame()
-  }else if(gamestate===4){
-
+  }else if(gameState===4){
+    runInstructions()
   }
 }
 
@@ -59,12 +60,14 @@ function loadObjects(n){
   buttonMedium = new Button(400,500,180,90,"Medium",color(244, 232, 104),1)
   buttonHard = new Button(600,500,180,90,"Hard",color(255, 0, 0),2)
   buttonRules = new Button(400,600,180,90,"Rules",color(255),3)
+  buttonBack = new Button(400,700,180,90,"Menu",color(255),4)
 }
 
 function runButtons(){
   buttonEasy.run()
   buttonMedium.run()
   buttonHard.run()
+  buttonRules.run()
 }
 
 function runGame(){
@@ -85,19 +88,38 @@ function startGame(n){
 }
 
 function endGame(){
-  append(highscore,score)
   background(5, 5, 5);
   fill(200, 30, 150);
   score = 0
   textAlign(CENTER);
   textSize(60);
   fill(255);
-  text("You Lost", 400, 300);
+  text("You Lost", 400, 200);
   textSize(45);
   fill(255);
-  text("Try again", 400, 375);
+  text("Try again", 400, 250);
+  textSize(45);
+  fill(255);
+  text("Score: " + paddle.score, 400, 300);
+  if(paddle.score > highscore){
+    highscore = paddle.score
+  }
+  textSize(45);
+  fill(255);
+  text("Highscore: " + highscore, 400, 350);
   buttonEasy.run()
   buttonMedium.run()
   buttonHard.run()
-  health = 10
+  buttonRules.run()
+  health = 5
+}
+
+function runInstructions(){
+  background(5,5,5);
+  fill(255);
+  textAlign(CENTER);
+  textSize(20);
+  text("Play by collecting balls with moving the paddle with the mouse", 400, 200);
+  text("watchout for balls hitting the bottom of your paddle as you will lose health", 400, 300);
+  buttonBack.run()
 }

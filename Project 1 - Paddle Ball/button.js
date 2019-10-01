@@ -42,6 +42,11 @@ class Button{
         trackingspeed = 0.1
         loadonce = 0
         gameState = 2
+      }else if(this.id === 3){
+        gameState = 4
+      }else if(this.id === 4){
+        background(5, 5, 5)
+        gameState = 1
       }
     }//starts the game when a button is pressed
   }//end of mouseCheck

@@ -30,14 +30,13 @@ class Paddle{
   update(){
     var mouseLoc = createVector((mouseX-this.w/2), this.loc.y);
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, trackingspeed);
-    this.score = score
     textSize(32);
     rectMode(CORNER)
     fill(0, 102, 153);
+    this.score = score
     text("Score = " + this.score, 80, 30);
     fill(0, 102, 153);
     this.health = health
     text("Health = " + this.health, 700, 30);
-
   }
   }//Class end
