@@ -29,7 +29,7 @@ class Paddle{
   }//checkEdges end
   update(){
     var mouseLoc = createVector((mouseX-this.w/2), this.loc.y);
-    this.loc = p5.Vector.lerp(this.loc, mouseLoc, .5);
+    this.loc = p5.Vector.lerp(this.loc, mouseLoc, trackingspeed);
     this.score = score
     textSize(32);
     rectMode(CORNER)

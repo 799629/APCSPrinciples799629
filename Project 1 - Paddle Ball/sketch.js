@@ -13,6 +13,7 @@ var gameTimer = 10;
 var highscore = [];
 var startingBalls = 3
 var buttonEasy
+var trackingspeed = .09
 var buttonMedium
 var buttonHard
 function setup() {
