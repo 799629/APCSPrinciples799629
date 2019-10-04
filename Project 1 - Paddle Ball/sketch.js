@@ -58,7 +58,7 @@ function loadObjects(n){
   }
   buttonEasy = new Button(200,500,180,90,"Easy",color(0, 255, 0),0);
   buttonMedium = new Button(400,500,180,90,"Medium",color(244, 232, 104),1);
-  buttonHard = new Button(600,500,180,90,"Hard",color(255, 0, 0),2;
+  buttonHard = new Button(600,500,180,90,"Hard",color(255, 0, 0),2);
   buttonRules = new Button(400,600,180,90,"Rules",color(255),3);
   buttonBack = new Button(400,700,180,90,"Menu",color(255),4);
 }
