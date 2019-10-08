@@ -8,9 +8,8 @@ class Square{
     this.render
   }
 
-
-
   render(){
-
-  }
-}
+    fill(this.clr);
+    rect(this.loc.x, this.loc.y, 100, 100)
+  }//render End
+}//class End
