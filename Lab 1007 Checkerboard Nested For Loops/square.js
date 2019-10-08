@@ -10,6 +10,7 @@ class Square{
 
   render(){
     fill(this.clr);
+    noStroke()
     rect(this.loc.x, this.loc.y, 100, 100)
   }//render End
 }//class End
