@@ -33,3 +33,7 @@ function swap(list, a, b){
 function printList(list){
   console.log(list)
 }
+
+//function createList(){
+
+//}
