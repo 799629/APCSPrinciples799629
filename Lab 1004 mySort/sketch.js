@@ -14,7 +14,8 @@ function setup() {
 function BubbleSort(list){
   for(var sorted = 0;sorted < list.length;sorted++){
     for(var i = list.length; i <= 0; i++){
-      if(list[i]>list[i+1]){
+      if(int(list[i])>int(list[i+1])){
+        console.log("it works")
         list[i],list[i+1] = swap(list, i, (i+1))
       }
       else if(list[i]<=list[i+1]){
