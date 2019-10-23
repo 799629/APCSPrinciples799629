@@ -5,6 +5,9 @@ var oldlist = [];
 var selectionSwaps = 0;
 var bubbleSwaps = 0;
 var insertionSwaps = 0;
+var bubbleTime = 0;
+var selectionTime = 0;
+var insertionTime = 0;
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -13,14 +16,15 @@ function setup(){
   oldlist = createIntList(oldlist, 100)
   console.log("This is the origional list [randomized numbers]:")
   printList(oldlist);
-  newlist = bubbleSort(oldlist);
-  newlist = selectionSort(oldlist);
-  newlist = InsertionSort(oldlist);
+  newlist,bubbleTime = bubbleSort(oldlist);
+  newlist,insertionTime = insertionSort(oldlist);
+  newlist,selectionTime = selectionSort(oldlist);
   console.log("This is the new sorted list:");
   printList(newlist);
-  console.log("Bubble sort made " + str(bubbleSwaps) + " swaps");
-  console.log("Insertion sort made " + str(insertionSwaps) + " swaps");
-  console.log("Selection sort made " + str(selectionSwaps) + " swaps");
+  milliseconds = millis();
+  console.log("Bubble sort made " + str(bubbleSwaps) + " swaps in " + bubbleTime + " seconds");
+  console.log("Insertion sort made " + str(insertionSwaps) + " swaps " + insertionTime + " seconds");
+  console.log("Selection sort made " + str(selectionSwaps) + " swaps " + selectionTime + " seconds");
 }//end setup
 
 function selectionSort(list){
@@ -34,9 +38,10 @@ function selectionSort(list){
     var temp = list[i];
     list[i] = list[index];
     list[index] = temp;
-    selectionSwaps = selectionSwaps + 1
+    selectionSwaps = selectionSwaps + 1;
   }//end i for loop
-  return(list);
+  var seconds = (millis()/1000);
+  return(list,seconds);
 }//end function
 
 function bubbleSort(list){
@@ -44,11 +49,12 @@ function bubbleSort(list){
     for (j=0; j<list.length-1-i; j++){
       if (list[j+1] < list[j]) {
         swap(list, j+1, j);
-        bubbleSwaps = bubbleSwaps + 1
+        bubbleSwaps = bubbleSwaps + 1;
       }//end if statement
     }//end j for loop
   }//end i for loop
-  return (list);
+  var seconds = (millis()/1000);
+  return (list,seconds);
 }//end function
 
 function createIntList(list, n){
@@ -57,22 +63,20 @@ function createIntList(list, n){
     list.push(int(random(1,100)));
   }
   return(list);
-}
+}//function end
 
-function InsertionSort(list){
+function insertionSort(list){
   for(var i = 0; i < list.length; i++){
-    if(list[i] > list[i+1]){
-      swap(list,i,i+1)
-    }//end if statement
     for(var j = i; j > 0; j--){
       if(list[j] < list[j-1]){
-        insertionSwaps = insertionSwaps + 1
+        insertionSwaps = insertionSwaps + 1;
         swap(list,j,j-1);
       }// end if statement
     }//end j for loop
   }//end i for loop
-  return(list);
-}
+  var seconds = (millis()/1000);
+  return(list,seconds);
+}//end function
 
 function swap(list, a, b){
   var temp =  list[a];
@@ -84,7 +88,3 @@ function swap(list, a, b){
 function printList(list){
   console.log(list);
 }
-
-//function createList(){
-
-//}
