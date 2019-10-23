@@ -3,13 +3,15 @@
 
 class Bars{
 constructor(x,y,w,h){
+  h = 8*h
+  y = (y+height)-h
   this.loc = createVector(x, y);
-  this.acc = createVector(0,0.1);
-  this.clr = color(5);
+  this.clr = color(100);
   this.w = w;
   this.h = h;
 }//constructor end
 run(){
+  console.log("Bars.run works")
   //this.update();
   this.render();
 }//run end
