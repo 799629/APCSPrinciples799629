@@ -4,6 +4,7 @@
 var bars = [];
 var oldlist = []
 var newlist = []
+var i = bars.length-1
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -13,15 +14,21 @@ function setup(){
   printList(oldlist)
   loadBars(oldlist);
   runBars(oldlist)
-  newlist = BubbleSort(oldlist)
+  draw()
+  //newlist = BubbleSort(oldlist)
   //printList(newlist)
   //loadBars(newlist)
 }//end setup
 
-//function draw(){
-  //background(250, 250, 250, 20);
-  //runBars(newlist);
-//}
+function draw(){
+  frameRate(1)
+  i = i + 1
+  background(250, 250, 250, 20);
+  newlist = bubbleSort(oldlist)
+  oldlist = newlist
+  loadBars(newlist)
+  runBars(bars);
+}
 
 function createIntList(n){
   var list = [];
@@ -46,14 +53,12 @@ function runBars(list){
   }//end for loop
 }//end function
 
-function BubbleSort(list){
-  for (i=0; i<list.length-1; i++){
+function bubbleSort(list){
     for (j=0; j<list.length-1-i; j++){
       if (list[j+1] < list[j]){
         swap(list, j+1, j);
       }//end i for loop
     }//end j for loop
-  }//end for loop
   return(list);
 }//end function
 
