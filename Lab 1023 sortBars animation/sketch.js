@@ -1,70 +1,52 @@
-//  Kawika Tu
-// 	10/23/19
-//  The setup function function is called once when your program begins
-var barslist = [];
-var oldlist = []
-var newlist = []
-var i = 0
-function setup(){
+//Kawika Tu
+//APCSP
+var barlist = [];
+var x = 0;
+var i = barlist.length-1;
+var n = 100;
+function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(255, 250, 255);
-  fill(200, 30, 150);
-  oldlist = createIntList(10)
-  printList(oldlist)
-  loadBars(oldlist);
-  //runBars(oldlist)
-  frameRate(1)
-  draw()
-  //newlist = BubbleSort(oldlist)
-}//end setup
-
-function draw(){
-  i++
-  bubbleSort(barslist)
-  loadBars(barslist)
+  background(5, 5, 5);
+  fill(250, 250, 250);
+  loadBars(50);
+  frameRate(15);
+}
+function swap(list,x,y){
+  var temporary = list[x];
+  list[x] = list[y];
+  list[y] = temporary;
 }
 
-function createIntList(n){
-  var list = [];
+function changelocation(list,x,y){
+  var temploc = list[x].loc.x;
+  list[x].loc.x = list[y].loc.x;
+  list[y].loc.x = temploc;
+}
+
+//  The draw function is called @ 30 fps
+function draw() {
+  background(0,0,0);
+  runbars();
+  i = i + 1
+  for(var j = 0; j < barlist.length-1; j++){
+    if(barlist[j].h > barlist[j+1].h){
+      swap(barlist, j, j+1);
+      changelocation(barlist, j, j+1);
+    }//end if statement
+  }
+}
+
+function loadBars(n){
   for(var i = 0; i < n; i++){
-    list.push(int(random(1,100)));
+    numbars = n
+    barlist[i] = new Bar(x, Bar.h);
+    x = x + width / n;
   }
-  return(list);
-}//function end
-
-function loadBars(list){
-  for(var i = 0; i < list.length; i++){
-    var x = (width/list.length)*i
-    list[i] = new Bars(x,0,width/list.length,list[i])
-  }
-  runBars(list)
-  return(list)
-  console.log("loadBars works")
 }
 
-function runBars(list){
-  for(var i = 0; i < list.length; i++){
-    list[i].run();
-  }//end for loop
-}//end function
-
-function bubbleSort(list){
-    for (j=0; j<list.length-1-i; j++){
-      if (list[j+1] < list[j]){
-        swap(list, j+1, j);
-      }//end i for loop
-    }//end j for loop
-  return(list);
-}//end function
-
-function swap(list, a, b){
-  var temp =  list[a]
-  list[a] = list[b]
-  list[b] = temp
-  return(list[b],list[a])
-}//end swap function
-
-function printList(list){
-  console.log(list)
-}//end printlist function
+function runbars(){
+ for(var i = 0; i < barlist.length; i++){
+   barlist[i].run();
+ }
+}

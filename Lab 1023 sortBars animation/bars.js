@@ -1,27 +1,23 @@
 //  Kawika Tu
-// 	10/23/19
+// 	APCSP
 
-class Bars{
-constructor(x,y,w,h){
-  h = 8*h
-  y = (y+height)-h
-  this.loc = createVector(x, y);
-  this.clr = color(100);
-  this.w = w;
-  this.h = h;
-}//constructor end
-run(){
-  console.log("Bars are rendering")
-  //this.update();
-  this.render();
-}//run end
-render(){
-  fill(this.clr);
-  rect(this.loc.x,this.loc.y,this.w,this.h)
-}//render end
+class Bar{
+  constructor(x,y){
+    this.h = random(0,800);
+    var clr = 255/(850/this.h)
+    this.clr = color(clr);
+    this.lenth = width/numbars;
+    this.loc = createVector(x,y);
+    this.loc.y = height-(this.h)
+  }//end constructor
 
-update(){
+  run(){
+    this.render();
+  }//end run
 
-}
+  render(){
+    fill(this.clr);
+    rect(this.loc.x, this.loc.y, this.lenth, this.h)
+  }//end render
 
-}//Class end
+}//end class
