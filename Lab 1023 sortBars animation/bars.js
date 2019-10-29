@@ -11,7 +11,7 @@ constructor(x,y,w,h){
   this.h = h;
 }//constructor end
 run(){
-  console.log("Bars.run works")
+  console.log("Bars are rendering")
   //this.update();
   this.render();
 }//run end

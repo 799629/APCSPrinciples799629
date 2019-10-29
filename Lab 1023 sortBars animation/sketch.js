@@ -1,9 +1,10 @@
 //  Kawika Tu
 // 	10/23/19
 //  The setup function function is called once when your program begins
-var bars = [];
+var barslist = [];
 var oldlist = []
 var newlist = []
+var i = 0
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -12,16 +13,17 @@ function setup(){
   oldlist = createIntList(10)
   printList(oldlist)
   loadBars(oldlist);
-  runBars(oldlist)
-  newlist = BubbleSort(oldlist)
-  //printList(newlist)
-  //loadBars(newlist)
+  //runBars(oldlist)
+  frameRate(1)
+  draw()
+  //newlist = BubbleSort(oldlist)
 }//end setup
 
-//function draw(){
-  //background(250, 250, 250, 20);
-  //runBars(newlist);
-//}
+function draw(){
+  i++
+  bubbleSort(barslist)
+  loadBars(barslist)
+}
 
 function createIntList(n){
   var list = [];
@@ -32,11 +34,12 @@ function createIntList(n){
 }//function end
 
 function loadBars(list){
-  var n = list.length
-  for(var i = 0; i < n; i++){
-    var x = (width/n)*i
-    list[i] = new Bars(x,0,width/n,list[i])
+  for(var i = 0; i < list.length; i++){
+    var x = (width/list.length)*i
+    list[i] = new Bars(x,0,width/list.length,list[i])
   }
+  runBars(list)
+  return(list)
   console.log("loadBars works")
 }
 
@@ -46,14 +49,12 @@ function runBars(list){
   }//end for loop
 }//end function
 
-function BubbleSort(list){
-  for (i=0; i<list.length-1; i++){
+function bubbleSort(list){
     for (j=0; j<list.length-1-i; j++){
       if (list[j+1] < list[j]){
         swap(list, j+1, j);
       }//end i for loop
     }//end j for loop
-  }//end for loop
   return(list);
 }//end function
 
