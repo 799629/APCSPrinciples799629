@@ -1,5 +1,5 @@
 //  Kawika Tu
-// 	APCSP
+// 	APCSP P1
 
 class Bar{
   constructor(x,y){
