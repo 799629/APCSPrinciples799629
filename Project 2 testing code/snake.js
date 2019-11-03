@@ -2,11 +2,15 @@
 //09/03/19
 //Project 2 - Snake Game
 class Snake{
-  constructor(x,y,clr,dir,id){
+  constructor(x,y,index,id){
     this.loc = createVector(x,y)
-    this.clr = color(random(255),random(255),random(255));
-    this.direction = dir
     this.id = id
+    if(this.id === "head"){
+      this.clr = color(0,200,250)
+    }
+    else{this.clr = color(250,250,250);
+    }
+    this.direction = 0
   }//constructor end
 
   run(){
@@ -19,66 +23,88 @@ class Snake{
   render(){
     rectMode(CORNER)
     fill(this.clr);
-    rect(this.loc.x,this.loc.y,4,4)
+    console.log("x.loc = " + this.loc.x + ". y.loc = " + this.loc.y);
+    rect(this.loc.x,this.loc.y,10,10)
   }//render end
 
   control(){
-    if(keyCode() === UP_ARROW && this.direction !== 3){
-      this.direction = 1
-    }else{
-      gameState = 0 //this needs to be changed later
-      console.log("you died")
-    }
-    if(keyCode() === RIGHT_ARROW && this.direction !== 4){
-      this.direction = 2
-    }else{
-      gameState = 0 //this needs to be changed later
-      console.log("you died")
-    }
-    if(keyCode() === DOWN_ARROW && this.direction !== 1){
-      this.direction = 3
-    }else{
-      gameState = 0 //this needs to be changed later
-      console.log("you died")
-    }
-    if(keyCode() === LEFT_ARROW && this.direction !== 2){
-      this.direction = 4
-    }else{
-      gameState = 0 //this needs to be changed later
-      console.log("you died")
+    if(keyCode === UP_ARROW){
+      if(this.direction == 3){
+        gameState = 0 //this needs to be changed later
+        console.log("you died, cannot go back into yourself")
+      }else{
+        this.direction = 1
+      }
+    }else if(keyCode === RIGHT_ARROW){
+      if(this.direction == 4){
+        gameState = 0 //this needs to be changed later
+        console.log("you died, cannot go back into yourself")
+      }else{
+        this.direction = 2
+      }
+    }else if(keyCode === DOWN_ARROW){
+      if(this.direction == 1){
+        gameState = 0 //this needs to be changed later
+        console.log("you died, cannot go back into yourself")
+      }else{
+        this.direction = 3
+      }
+    }else if(keyCode === LEFT_ARROW){
+      if(this.direction == 2){
+        gameState = 0 //this needs to be changed later
+        console.log("you died, cannot go back into yourself")
+      }else{
+        this.direction = 4
+      }
     }
   }//end control
 
   checkEdges(){
     if (this.loc.x < -1){
       gameState = 0 //this needs to be changed later
-      console.log("you died")
+      console.log("you died, exceeds left constraint")
     }
     if(this.loc.x > 801 - 5){
       gameState = 0 //this needs to be changed Later
-      console.log("you died")
+      console.log("you died, exceeds right constraint")
     }
     if(this.loc.y < -1){
       gameState = 0 //this needs to be changed later
-      console.log("you died")
+      console.log("you died, exceeds top constraint")
     }
     if(this.loc.y > 801){
       gameState = 0 //this needs to be changed later
-      console.log("you died")
+      console.log("you died, exceeds bottom constraint")
     }
   }//checkEdges end
 
   update(){
+    console.log(this.id);
+
     if(this.id === "head"){
+      console.log(this.direction);
       if(this.direction === 1){
-        this.loc.y = this.loc.y - 4
+        this.loc.y = this.loc.y - 10
       }else if (this.direction === 2){
-        this.loc.x = this.loc.x + 4
+        this.loc.x = this.loc.x + 10
       }else if (this.direction === 3){
-        this.loc.y = this.loc.y + 4
+        this.loc.y = this.loc.y + 10
       }else if (this.direction === 4){
-        this.loc.x = this.loc.x - 4
+        this.loc.x = this.loc.x - 10
       }
+      snakeHeadx = this.loc.x
+      snakeHeady = this.loc.y
     }//end if this.id = head
+    else{
+      console.log("uhhh");
+    }//else ends
+    var tempArray = snakeArray;
+    for(var i = 0; i < snakeArray.length; i++){
+      if(i > 0){
+        snakeArray[i] = tempArray[i-1];
+      }//end if statement
+    }//end for loop
   }//update end
+
+
 }//Class end

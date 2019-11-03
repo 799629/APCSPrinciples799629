@@ -2,13 +2,12 @@
 //09/03/19
 //Attraction Repulsion
 class Food{
-  constructor(x,y,dx,dy,i){
+  constructor(x,y,id){
     this.loc = createVector(x, y);
-    this.vel = createVector(dx, dy);
     this.acc = createVector(0,0.1);
     this.clr = color(random(255),random(255),random(255));
     this.w = 15;
-    this.id = i;
+    this.id = id;
   }//constructor end
   run(){
     this.isColliding();
