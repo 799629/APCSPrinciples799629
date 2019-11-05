@@ -16,32 +16,36 @@ function setup(){
   score = 0;
   snakeHead = snakeArray[0]
   draw()
-}
+}//end function setup
 
 //  The draw function is called @ 30 fps
 function draw() {
   frameRate(1)
   background(5, 5, 5)
   runGame()
-}
+}//end function draw
 
 function startGame(){
-  snakeArray[0] =  new Snake(400,400,0,"head")
+  snakeArray[0] =  new Snake(400,400,0)
   console.log(snakeArray);
   // asdfjhaskjfnaw;efhj
-  for(var i = 1; i < 10; i++){
-    var x = snakeArray[i-1].loc.x
-    var y = snakeArray[i-1].loc.y
-    snakeArray[i] = new Snake(x,y,i,"tail")
-  }//end experimental for loop
   //a;ksjdrfhliauwfh
 }
 
 function runGame(){
   console.log(snakeArray);
+
   for(var i = 0; i < snakeArray.length; i++){
     snakeArray[0].run()
   }//end for loop
+  if(keyCode === UP_ARROW){
+    grow()
+  }
 }//end function runGame
 
-//function ()
+function grow(){
+  var n = snakeArray.length
+  var x = snakeArray[n-1].loc.x
+  var y = snakeArray[n-1].loc.y
+  snakeArray[n] = new Snake(x,y,n)
+}
