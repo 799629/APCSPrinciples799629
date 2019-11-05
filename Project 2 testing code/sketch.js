@@ -47,5 +47,5 @@ function grow(){
   var n = snakeArray.length
   var x = snakeArray[n-1].loc.x
   var y = snakeArray[n-1].loc.y
-  snakeArray[n] = new Snake(x,y,n)
+  snakeArray[n+1] = new Snake(x,y,n+1)
 }

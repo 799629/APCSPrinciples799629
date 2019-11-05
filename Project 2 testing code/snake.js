@@ -79,9 +79,8 @@ class Snake{
   }//checkEdges end
 
   update(){
-    console.log(this.index);
+    console.log("this index is" + this.index);
     if(this.index === 0){
-      console.log(this.direction);
       if(this.direction === 1){
         this.loc.y = this.loc.y - 10;
       }else if (this.direction === 2){
@@ -98,7 +97,7 @@ class Snake{
       console.log("This works");
     }//else ends
     var tempArray = snakeArray;
-    for(var i = 1; i < snakeArray.length-1; i++){
+    for(var i = 1; i < snakeArray.length; i++){
       if(i > 0){
         snakeArray[i] = tempArray[i-1];
         console.log("this snake is a " + snakeArray.index);
