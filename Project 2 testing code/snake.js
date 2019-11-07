@@ -97,7 +97,7 @@ class Snake{
       console.log("This works");
     }//else ends
     var tempArray = snakeArray;
-    for(var i = 1; i < snakeArray.length; i++){
+    for(var i = snakeArray.length; i > 1; i++){
       if(i > 0){
         snakeArray[i] = tempArray[i-1];
         console.log("this snake is a " + snakeArray.index);

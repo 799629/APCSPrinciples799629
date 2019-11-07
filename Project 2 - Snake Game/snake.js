@@ -2,18 +2,22 @@
 //09/03/19
 //Project 2 - Snake Game
 class Snake{
-  constructor(id){
-    this.loc = createVector(snakeHeadx,snakeHeady)
-    this.clr = color(250,250,250);
+  constructor(x,y,index){
+    this.loc = createVector(x,y)
+    this.index = index
+    if(this.index === 0){
+      this.clr = color(0,200,250)
+    }
+    else{this.clr = color(250,250,250);
+    }
     this.direction = 0
-    this.id = id
   }//constructor end
 
   run(){
     this.control();
+    this.render();
     this.update();
     this.checkEdges();
-    this.render();
   }//run end
 
   render(){
@@ -75,28 +79,30 @@ class Snake{
   }//checkEdges end
 
   update(){
-    console.log("snake update runs");
+    console.log("this index is" + this.index);
+    if(this.index === 0){
+      if(this.direction === 1){
+        this.loc.y = this.loc.y - 10;
+      }else if (this.direction === 2){
+        this.loc.x = this.loc.x + 10;
+      }else if (this.direction === 3){
+        this.loc.y = this.loc.y + 10;
+      }else if (this.direction === 4){
+        this.loc.x = this.loc.x - 10;
+      }
+      snakeHeadx = this.loc.x;
+      snakeHeady = this.loc.y;
+    }//end if this.index === 0
+    else{
+      console.log("This works");
+    }//else ends
     var tempArray = snakeArray;
-    for(var i = 0; i < snakeArray.length; i++){
+    for(var i = 1; i < snakeArray.length; i++){
       if(i > 0){
         snakeArray[i] = tempArray[i-1];
-      }
-      console.log("reassign array success");
-    }
-    if(this.id === "head"){
-      console.log(this.direction);
-      if(this.direction === 1){
-        this.loc.y = this.loc.y - 10
-      }else if (this.direction === 2){
-        this.loc.x = this.loc.x + 10
-      }else if (this.direction === 3){
-        this.loc.y = this.loc.y + 10
-      }else if (this.direction === 4){
-        this.loc.x = this.loc.x - 10
-      }
-      snakeHeadx = this.loc.x
-      snakeHeady = this.loc.y
-    }//end if this.id = head
+        console.log("this snake is a " + snakeArray.index);
+      }//end if statement
+    }//end for loop
   }//update end
 
 

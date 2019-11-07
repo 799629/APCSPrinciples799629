@@ -3,6 +3,7 @@
 //  The setup function function is called once when your program begins
 var snakeHeadx = 0;
 var snakeHeady = 0;
+var snakeHead;
 var score;
 var direction;
 var gameState = 1
@@ -15,12 +16,12 @@ function setup(){
   startGame()
   score = 0;
   snakeHead = snakeArray[0]
+  frameRate(1)
   draw()
 }//end function setup
 
 //  The draw function is called @ 30 fps
 function draw() {
-  frameRate(1)
   background(5, 5, 5)
   runGame()
 }//end function draw
@@ -44,7 +45,8 @@ function runGame(){
 }//end function runGame
 
 function grow(){
-  var n = snakeArray.length
+  var n = snakeArray.length;
+  console.log("the snakeArray is " + n + " segments long");
   var x = snakeArray[n-1].loc.x
   var y = snakeArray[n-1].loc.y
   snakeArray[n+1] = new Snake(x,y,n+1)
