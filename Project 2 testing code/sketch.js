@@ -16,7 +16,7 @@ function setup(){
   startGame()
   score = 0;
   snakeHead = snakeArray[0]
-  frameRate(1)
+  frameRate(3)
   draw()
 }//end function setup
 
@@ -37,17 +37,18 @@ function runGame(){
   console.log(snakeArray);
 
   for(var i = 0; i < snakeArray.length; i++){
-    snakeArray[0].run()
+    snakeArray[i].run()
   }//end for loop
   if(keyCode === UP_ARROW){
+    console.log("a;slkdfhajcna");
     grow()
   }
 }//end function runGame
 
 function grow(){
   var n = snakeArray.length;
-  console.log("the snakeArray is " + n + " segments long");
+  console.log("the snakeArray is " + str(n) + " segments long");
   var x = snakeArray[n-1].loc.x
   var y = snakeArray[n-1].loc.y
-  snakeArray[n+1] = new Snake(x,y,n+1)
+  snakeArray[n] = new Snake(x,y,n)
 }
