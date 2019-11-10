@@ -14,9 +14,9 @@ class Snake{
   }//constructor end
 
   run(){
+    this.update();
     this.control();
     this.render();
-    this.update();
     this.checkEdges();
   }//run end
 
@@ -81,6 +81,15 @@ class Snake{
   update(){
     console.log("this index is" + this.index);
     if(this.index === 0){
+      var tempArray = snakeArray;
+      var i = this.index
+      snakeArray[this.index] = tempArray[this.index - 1];
+      snakeArray[i].index = i
+      console.log(snakeArray);
+      console.log("snakeArray[i].index === " + snakeArray[i].index);
+    }//end if statemtnt
+    if(this.index === 0){
+      snakeHead = snakeArray[0]
       if(this.direction === 1){
         this.loc.y = this.loc.y - 10;
       }else if (this.direction === 2){
@@ -96,14 +105,7 @@ class Snake{
     else{
       console.log("This works");
     }//else ends
-    var tempArray = snakeArray;
-    for(var i = 1; i < snakeArray.length; i++){
-      if(i > 0){
-        snakeArray[i] = tempArray[i-1];
-        console.log("this snake is a " + snakeArray.index);
-      }//end if statement
-    }//end for loop
   }//update end
 
 
-}//Class end
+}//Class end//

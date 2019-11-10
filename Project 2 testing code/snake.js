@@ -80,12 +80,13 @@ class Snake{
 
   update(){
     console.log("this index is" + this.index);
-    if(this.index > 0.1){
+    if(this.index != 0){
       var tempArray = snakeArray;
-      snakeArray[this.index] = tempArray[this.index-1];
-      debugger;
-      snakeArray[this.index].index = this.index + 1;
-      console.log("this snake is a " + snakeArray.index);
+      var i = this.index
+      snakeArray[this.index] = tempArray[this.index - 1];
+      snakeArray[i].index = i;
+      console.log(snakeArray);
+      console.log("snakeArray[i].index === " + snakeArray[i].index);
     }//end if statemtnt
     if(this.index === 0){
       snakeHead = snakeArray[0]

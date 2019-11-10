@@ -8,6 +8,7 @@ var score;
 var direction;
 var gameState = 1
 var snakeArray = [];
+var loadonce = 0;
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -34,14 +35,16 @@ function startGame(){
 }
 
 function runGame(){
-  console.log(snakeArray);
-
+  //console.log(snakeArray);
   for(var i = 0; i < snakeArray.length; i++){
     snakeArray[i].run()
   }//end for loop
   if(keyCode === UP_ARROW){
     console.log("a;slkdfhajcna");
-    grow()
+    if(loadonce === 0){
+        grow()
+        loadonce = 1
+    }
   }
 }//end function runGame
 

@@ -4,9 +4,8 @@
 class Food{
   constructor(x,y,id){
     this.loc = createVector(x, y);
-    this.acc = createVector(0,0.1);
-    this.clr = color(random(255),random(255),random(255));
-    this.w = 15;
+    this.clr = color(0,255,0);
+    this.w = 10;
     this.id = id;
   }//constructor end
   run(){
@@ -21,7 +20,7 @@ class Food{
 
   isColliding(){
     //Check if snake is touching code
-
+    if()
   }//isColliding end
 
   removeFood(){
