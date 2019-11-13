@@ -9,6 +9,7 @@ var direction;
 var gameState = 1
 var snakeArray = [];
 var loadonce = 0;
+var globalIndex;
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -22,10 +23,12 @@ function setup(){
 }//end function setup
 
 //  The draw function is called @ 30 fps
-function draw() {
+function draw(){
   background(5, 5, 5)
-  runGame()
-}//end function draw
+  if(gameState === 1){
+    runGame()
+  }
+}//end draw function
 
 function startGame(){
   snakeArray[0] =  new Snake(400,400,0)
@@ -35,15 +38,17 @@ function startGame(){
 }
 
 function runGame(){
-  //console.log(snakeArray);
-  for(var i = 0; i < snakeArray.length; i++){
-    snakeArray[i].run()
+  console.log(snakeArray);
+  for(var j = 0; j < snakeArray.length; j++){
+    globalIndex = j;
+    console.log("global index is " + globalIndex);
+    snakeArray[j].run()
   }//end for loop
   if(keyCode === UP_ARROW){
-    console.log("a;slkdfhajcna");
     if(loadonce === 0){
-        grow()
-        loadonce = 1
+      console.log("Growing a snake ++++++++++++++++++++++++++++++++++++++++");
+      grow()
+      loadonce = 1
     }
   }
 }//end function runGame

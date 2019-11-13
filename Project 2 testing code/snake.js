@@ -80,16 +80,19 @@ class Snake{
 
   update(){
     console.log("this index is" + this.index);
-    if(this.index != 0){
+    if(this.index > 0.1){
       var tempArray = snakeArray;
       var i = this.index
-      snakeArray[this.index] = tempArray[this.index - 1];
-      snakeArray[i].index = i;
-      console.log(snakeArray);
-      console.log("snakeArray[i].index === " + snakeArray[i].index);
-    }//end if statemtnt
+      snakeArray[i] = tempArray[i - 1];
+      console.log("tail snakeArray[i].index === " + snakeArray[i].index);
+      console.log("This F****** works");
+      snakeArray[i].index = globalIndex;//+++++++++++++++++++++++++++++++++++++++
+      console.log("inside globalIndex = " + globalIndex);
+      console.log("the new index is " + this.index);
+    }//end if statement
     if(this.index === 0){
-      snakeHead = snakeArray[0]
+      console.log("the snake head is moving");
+      snakeHead = snakeArray[0];
       if(this.direction === 1){
         this.loc.y = this.loc.y - 10;
       }else if (this.direction === 2){
