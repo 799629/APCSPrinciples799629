@@ -39,11 +39,7 @@ function startGame(){
 
 function runGame(){
   console.log(snakeArray);
-  for(var j = 0; j < snakeArray.length; j++){
-    globalIndex = j;
-    console.log("global index is " + globalIndex);
-    snakeArray[j].run()
-  }//end for loop
+  snakeArray[j].run()
   if(keyCode === UP_ARROW){
     if(loadonce === 0){
       console.log("Growing a snake ++++++++++++++++++++++++++++++++++++++++");
