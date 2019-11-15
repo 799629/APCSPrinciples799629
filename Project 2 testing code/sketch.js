@@ -27,6 +27,8 @@ function draw(){
   background(5, 5, 5)
   if(gameState === 1){
     runGame()
+  }else if(gameState === 2){
+    console.log("hello world");
   }
 }//end draw function
 
@@ -39,12 +41,16 @@ function startGame(){
 
 function runGame(){
   console.log(snakeArray);
-  snakeArray[j].run()
+  for(var j = snakeArray.length - 1; j < -1; j++){
+    globalIndex = j;
+    console.log("global index is " + globalIndex);
+    snakeArray[j].run()
+  }//end for loop
   if(keyCode === UP_ARROW){
-    if(loadonce === 0){
+    if(loadonce < 3){
       console.log("Growing a snake ++++++++++++++++++++++++++++++++++++++++");
       grow()
-      loadonce = 1
+      loadonce = loadonce + 1;
     }
   }
 }//end function runGame

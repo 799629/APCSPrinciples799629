@@ -80,8 +80,12 @@ class Snake{
 
   update(){
     console.log("this index is" + this.index);
-    for(var i = 1; i < snakeArray.length; i++)
-    if(this.index === 0){
+    if(this.index > 0){
+      var i = this.index
+      var tempArray = snakeArray;
+      snakeArray[i].loc = tempArray[i - 1].loc;
+      console.log("tail snakeArray[i].index === " + snakeArray[i].index);
+    }else if(this.index === 0){
       console.log("the snake head is moving");
       snakeHead = snakeArray[0];
       if(this.direction === 1){
@@ -96,12 +100,6 @@ class Snake{
       snakeHeadx = this.loc.x;
       snakeHeady = this.loc.y;
     }//end if this.index === 0
-      var tempArray = snakeArray;
-      var i = this.index
-      snakeArray[i] = tempArray[i - 1];
-      snakeArray[i].index = globalIndex;//+++++++++++++++++++++++++++++++++++++++
-    }//end for loop
-
     else{
       console.log("This works");
     }//else ends
