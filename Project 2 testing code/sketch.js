@@ -5,7 +5,7 @@ var snakeHeadx = 0;
 var snakeHeady = 0;
 var snakeHead;
 var score;
-var direction;
+var direction = 0;
 var gameState = 1
 var snakeArray = [];
 var loadonce = 0;

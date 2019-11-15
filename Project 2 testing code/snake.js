@@ -10,7 +10,6 @@ class Snake{
     }
     else{this.clr = color(250,250,250);
     }
-    this.direction = 0
   }//constructor end
 
   run(){
@@ -88,13 +87,13 @@ class Snake{
     }else if(this.index === 0){
       console.log("the snake head is moving");
       snakeHead = snakeArray[0];
-      if(this.direction === 1){
+      if(direction === 1){
         this.loc.y = this.loc.y - 10;
-      }else if (this.direction === 2){
+      }else if (direction === 2){
         this.loc.x = this.loc.x + 10;
-      }else if (this.direction === 3){
+      }else if (direction === 3){
         this.loc.y = this.loc.y + 10;
-      }else if (this.direction === 4){
+      }else if (direction === 4){
         this.loc.x = this.loc.x - 10;
       }
       snakeHeadx = this.loc.x;
