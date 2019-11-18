@@ -28,32 +28,32 @@ class Snake{
 
   control(){
     if(keyCode === UP_ARROW){
-      if(this.direction == 3){
+      if(direction === 3){
         gameState = 0 //this needs to be changed later
         console.log("you died, cannot go back into yourself")
       }else{
-        this.direction = 1
+        direction = 1
       }
     }else if(keyCode === RIGHT_ARROW){
-      if(this.direction == 4){
+      if(direction === 4){
         gameState = 0 //this needs to be changed later
         console.log("you died, cannot go back into yourself")
       }else{
-        this.direction = 2
+        direction = 2
       }
     }else if(keyCode === DOWN_ARROW){
-      if(this.direction == 1){
+      if(direction === 1){
         gameState = 0 //this needs to be changed later
         console.log("you died, cannot go back into yourself")
       }else{
-        this.direction = 3
+        direction = 3
       }
     }else if(keyCode === LEFT_ARROW){
-      if(this.direction == 2){
+      if(direction === 2){
         gameState = 0 //this needs to be changed later
         console.log("you died, cannot go back into yourself")
       }else{
-        this.direction = 4
+        direction = 4
       }
     }
   }//end control
@@ -81,11 +81,11 @@ class Snake{
     console.log("this index is" + this.index);
     if(this.index > 0){
       var i = this.index
-      var tempArray = snakeArray;
       snakeArray[i].loc = tempArray[i - 1].loc;
       console.log("tail snakeArray[i].index === " + snakeArray[i].index);
     }else if(this.index === 0){
       console.log("the snake head is moving");
+      console.log("The Direction is === " + direction);
       snakeHead = snakeArray[0];
       if(direction === 1){
         this.loc.y = this.loc.y - 10;

@@ -5,11 +5,11 @@ var snakeHeadx = 0;
 var snakeHeady = 0;
 var snakeHead;
 var score;
-var direction = 0;
+var direction = 2;
 var gameState = 1
 var snakeArray = [];
+var tempArray = [];
 var loadonce = 0;
-var globalIndex;
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -35,15 +35,12 @@ function draw(){
 function startGame(){
   snakeArray[0] =  new Snake(400,400,0)
   console.log(snakeArray);
-  // asdfjhaskjfnaw;efhj
-  //a;ksjdrfhliauwfh
 }
 
 function runGame(){
   console.log(snakeArray);
-  for(var j = snakeArray.length - 1; j < -1; j++){
-    globalIndex = j;
-    console.log("global index is " + globalIndex);
+  //for(var j = snakeArray.length - 1; j > -1; j--){
+  for(var j = 0; j < snakeArray.length; j++){
     snakeArray[j].run()
   }//end for loop
   if(keyCode === UP_ARROW){
@@ -53,6 +50,7 @@ function runGame(){
       loadonce = loadonce + 1;
     }
   }
+  tempArray = snakeArray;
 }//end function runGame
 
 function grow(){
