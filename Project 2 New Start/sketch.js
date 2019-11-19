@@ -4,13 +4,12 @@
 var snakeHeadx = 0;
 var snakeHeady = 0;
 var snakeHead;
-var score = 0;
+var score;
 var direction = 2;
 var gameState = 1
 var snakeArray = [];
 var tempArray = [];
 var loadonce = 0;
-
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -41,10 +40,10 @@ function startGame(){
 function runGame(){
   console.log(snakeArray);
   //for(var j = snakeArray.length - 1; j > -1; j--){
-  for(var j = snakeArray.length - 1; j > -1; j--){
+  for(var j = snakeArray - 1; j > 0; j--){
     snakeArray[j].run()
   }//end for loop
-  if(snakeHeady === 440){
+  if(direction === 1){
     if(loadonce < 3){
       console.log("Growing a snake ++++++++++++++++++++++++++++++++++++++++");
       grow()
@@ -57,9 +56,7 @@ function runGame(){
 function grow(){
   var n = snakeArray.length;
   console.log("the snakeArray is " + str(n) + " segments long");
-  console.log("");
   var x = snakeArray[n-1].loc.x
   var y = snakeArray[n-1].loc.y
-  snakeArray[n] = new Snake(0,0,n)
-  //snakeArray[n] = new Snake(x,y,n)
+  snakeArray[n] = new Snake(x,y,n)
 }
