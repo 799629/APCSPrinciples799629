@@ -6,7 +6,7 @@ var snakeHeady = 0;
 var snakeHead;
 var score = 0;
 var direction = 2;
-var gameState = 1
+var gameState = 0;
 var snakeArray = [];
 var tempArray = [];
 var loadonce = 0;
@@ -26,6 +26,19 @@ function setup(){
 //  The draw function is called @ 30 fps
 function draw(){
   background(5, 5, 5)
+  if(gameState === 0){
+    background(0,0,0);
+    textSize(80);
+    fill(266);
+    text("Snake Game", 170, 300);//title
+    textSize(50);
+    text("Press the spacekey to begin", 160, 500);
+    if(keyCode === 32){//if space is pressed, the game
+        gamestate = 1;
+        score = 0;
+        keyCode = 0;
+    }
+  }
   if(gameState === 1){
     runGame()
   }else if(gameState === 2){
