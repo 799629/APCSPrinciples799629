@@ -18,7 +18,8 @@ function setup(){
   fill(200, 30, 150);
   startGame();
   score = 0;
-  snakeHead = snakeArray[0]
+  snakeHead = snakeArray[0];
+  food = new Food();
   frameRate(3);
   draw();
 }//end function setup
@@ -34,7 +35,7 @@ function draw(){
     textSize(50);
     text("Press the space bar to begin", 160, 500);
     if(keyCode === 32){//if space is pressed, the game
-        gamestate = 1;
+        gameState = 1;
         score = 0;
     }// if statement end
   }// gameState if statement end
@@ -56,6 +57,7 @@ function runGame(){
   for(var j = snakeArray.length - 1; j > -1; j--){
     snakeArray[j].run()
   }//end for loop
+  food.run()
   if(snakeHeady === 440){
     if(loadonce < 3){
       console.log("Growing a snake ++++++++++++++++++++++++++++++++++++++++");
