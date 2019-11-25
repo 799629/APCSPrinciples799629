@@ -16,11 +16,11 @@ function setup(){
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-  startGame()
+  startGame();
   score = 0;
   snakeHead = snakeArray[0]
-  frameRate(3)
-  draw()
+  frameRate(3);
+  draw();
 }//end function setup
 
 //  The draw function is called @ 30 fps
@@ -32,13 +32,12 @@ function draw(){
     fill(266);
     text("Snake Game", 170, 300);//title
     textSize(50);
-    text("Press the spacekey to begin", 160, 500);
+    text("Press the space bar to begin", 160, 500);
     if(keyCode === 32){//if space is pressed, the game
         gamestate = 1;
         score = 0;
-        keyCode = 0;
-    }
-  }
+    }// if statement end
+  }// gameState if statement end
   if(gameState === 1){
     runGame()
   }else if(gameState === 2){
