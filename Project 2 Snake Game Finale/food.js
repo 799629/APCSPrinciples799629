@@ -3,7 +3,7 @@
 //Attraction Repulsion
 class Food{
   constructor(){
-    this.loc = createVector(10*(random(0,80)),(random(0,80))*10);
+    this.loc = createVector((10*random(0,80)),(random(0,80)*10));
     this.clr = color(255,0,0);
     //this.id = id
   }
