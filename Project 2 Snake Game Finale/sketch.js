@@ -53,17 +53,13 @@ function startGame(){
 
 function runGame(){
   console.log(snakeArray);
-  //for(var j = snakeArray.length - 1; j > -1; j--){
+  var oldScore = score;
   for(var j = snakeArray.length - 1; j > -1; j--){
     snakeArray[j].run()
   }//end for loop
   food.run()
-  if(snakeHeady === 440){
-    if(loadonce < 3){
-      console.log("Growing a snake ++++++++++++++++++++++++++++++++++++++++");
+  if(oldScore != score){
       grow()
-      loadonce = loadonce + 1;
-    }
   }
   //tempArray = snakeArray;
 }//end function runGame

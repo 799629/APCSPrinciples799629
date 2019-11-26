@@ -14,7 +14,7 @@ class Food{
   }
 
   update(){
-    if((this.loc.y === snakeHeady) && (this.loc.x < snakeHeadx)){
+    if((this.loc.y === snakeHeady) && (this.loc.x === snakeHeadx)){
       this.loc = createVector(10*(random(0,80)),(random(0,80))*10);
       score = score + 1;
     }
