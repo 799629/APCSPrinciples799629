@@ -20,12 +20,12 @@ function setup(){
   score = 0;
   snakeHead = snakeArray[0];
   food = new Food();
-  frameRate(3);
+  frameRate(10)
   draw();
 }//end function setup
 
 //  The draw function is called @ 30 fps
-function draw(){
+function draw(frameRate){
   background(5, 5, 5)
   if(gameState === 0){
     background(0,0,0);

@@ -30,12 +30,14 @@ class Snake{
     if(keyCode === UP_ARROW){
       if(direction === 3){
         gameState = 0 //this needs to be changed later
+        this.reset()
         console.log("you died, cannot go back into yourself")
       }else{
         direction = 1
       }
     }else if(keyCode === RIGHT_ARROW){
       if(direction === 4){
+        this.reset()
         gameState = 0 //this needs to be changed later
         console.log("you died, cannot go back into yourself")
       }else{
@@ -43,6 +45,7 @@ class Snake{
       }
     }else if(keyCode === DOWN_ARROW){
       if(direction === 1){
+        this.reset()
         gameState = 0 //this needs to be changed later
         console.log("you died, cannot go back into yourself")
       }else{
@@ -50,6 +53,7 @@ class Snake{
       }
     }else if(keyCode === LEFT_ARROW){
       if(direction === 2){
+        this.reset()
         gameState = 0 //this needs to be changed later
         console.log("you died, cannot go back into yourself")
       }else{
@@ -77,6 +81,19 @@ class Snake{
     }
   }//checkEdges end
 
+  reset(){
+    var snakeHeadx = 0;
+    var snakeHeady = 0;
+    var snakeHead;
+    var score = 0;
+    var direction = 2;
+    var gameState = 0;
+    var snakeArray = [];
+    var tempArray = [];
+    var loadonce = 0;
+    snakeArray[0].loc = createVector(400,400)
+  }//reset end
+
   update(){
     console.log("this index is" + this.index);
     for(i = 0; i < snakeArray.length; i++){
@@ -91,14 +108,14 @@ class Snake{
       console.log("the snake head is moving");
       console.log("The Direction is === " + direction);
       snakeHead = snakeArray[0];
-      if(direction === 1){
-        this.loc.y = this.loc.y - 10;
-      }else if (direction === 2){
-        this.loc.x = this.loc.x + 10;
-      }else if (direction === 3){
-        this.loc.y = this.loc.y + 10;
-      }else if (direction === 4){
-        this.loc.x = this.loc.x - 10;
+      if(direction === 1){//up
+        this.loc = createVector(this.loc.x, this.loc.y - 10)
+      }else if (direction === 2){//right
+        this.loc = createVector(this.loc.x + 10, this.loc.y)
+      }else if (direction === 3){//down
+        this.loc = createVector(this.loc.x, this.loc.y + 10)
+      }else if (direction === 4){//left
+        this.loc = createVector(this.loc.x - 10, this.loc.y)
       }
       snakeHeadx = this.loc.x;
       snakeHeady = this.loc.y;

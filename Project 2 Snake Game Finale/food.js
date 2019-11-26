@@ -3,7 +3,7 @@
 //Attraction Repulsion
 class Food{
   constructor(){
-    this.loc = createVector((random(0,windowWidth)),(random(0,height)));
+    this.loc = createVector(10*(random(0,80)),(random(0,80))*10);
     this.clr = color(255,0,0);
     //this.id = id
   }
@@ -15,8 +15,7 @@ class Food{
 
   update(){
     if((this.loc.y === snakeHeady) && (this.loc.x < snakeHeadx)){
-      this.loc.x = wwidth * int(random(0,40));
-      this.loc.y = int(random(0,40));
+      this.loc = createVector(10*(random(0,80)),(random(0,80))*10);
       score = score + 1;
     }
   }//update end
