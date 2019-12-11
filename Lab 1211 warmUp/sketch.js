@@ -1,18 +1,27 @@
 //  Kawika Tu
 // 	9/5/19
 //  The setup function function is called once when your program begins
-var oldlist = [];
+var unsortlist = [];
+var sortlist = [];
+var average;
+var median;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-  oldlist = loadNumbers(11)
+  unsortlist = logNumbers(11)
   console.log("This is the origional list:")
-  logNumber(oldlist);
-  newlist = mySort(oldlist);
+  logNumber(unsortlist);
+  sortlist = mySort(unsortlist);
   console.log("This is the new sorted list:")
-  logNumber(newlist);
+  logNumber(sortlist);
+  console.log("This is the mean of the list:")
+  average = findAvg(sortlist);
+  logNumber(average);
+  console.log("This is the median of the list:")
+  median = findMedian(sortlist);
+  logNumber(median)
 }//end setup
 
 function mySort(list){
@@ -30,7 +39,7 @@ function mySort(list){
   return(list)
 }//end function
 
-function loadNumbers(n){
+function logNumbers(n){
   var list = [];
   for(var i = 0; i < n; i++){
     list.push(int(random(1,100)))
@@ -45,9 +54,31 @@ function swap(list, a, b){
   return(list[b],list[a])
 }
 
-function logNumber(list){
-  console.log(list)
+function logNumber(data){
+  console.log(data)
 }
+
+function findAvg(list){
+  var sum = 0;
+  for(var i = 0; i < list.length; i++){
+    sum = sum + list[i];
+  }
+  var avg = sum/list.length;
+  return(avg)
+}
+
+function findMedian(list){
+  var length = list.length;
+  var median;
+  if(length%2 == 1){
+    median = list[(length/2)-.5]
+  }else if(length%2 == 0){
+    var v1 = list[(length/2)-1]
+    var v2 = list[(length/2)]
+    median = (v1 + v2)/2
+  }
+  return(median)
+}//end function findMedian
 
 //function createList(){
 
