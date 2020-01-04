@@ -17,20 +17,9 @@ class Planet{
     fill(this.clr);
     ellipse(this.loc.x, this.loc.y, this.w, this.w)
   }//render end
-  checkEdges(){
-      if(this.loc.x < 0){
-        this.loc.x = width
-      }
-      if(this.loc.x > width){
-        this.loc.x = 0
-      }
-      if(this.loc.y < 0){
-        this.loc.y = height
-      }
-      if(this.loc.y > height){
-        this.loc.y = 0
-    }
-  }//checkEdges end
+
+  //there is no check edges because the planets are not moving
+
   update(){
     var distToship;
     distToship = this.loc.dist(ship.loc);
