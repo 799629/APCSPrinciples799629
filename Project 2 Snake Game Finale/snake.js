@@ -23,7 +23,7 @@ class Snake{
     rectMode(CORNER)
     fill(this.clr);
     console.log("x.loc = " + this.loc.x + ". y.loc = " + this.loc.y);
-    rect(this.loc.x,this.loc.y,10,10)
+    rect(this.loc.x,this.loc.y,20,20)
   }//render end
 
   control(){
@@ -109,13 +109,13 @@ class Snake{
       console.log("The Direction is === " + direction);
       snakeHead = snakeArray[0];
       if(direction === 1){//up
-        this.loc = createVector(this.loc.x, this.loc.y - 10)
+        this.loc = createVector(this.loc.x, this.loc.y - 20)
       }else if (direction === 2){//right
-        this.loc = createVector(this.loc.x + 10, this.loc.y)
+        this.loc = createVector(this.loc.x + 20, this.loc.y)
       }else if (direction === 3){//down
-        this.loc = createVector(this.loc.x, this.loc.y + 10)
+        this.loc = createVector(this.loc.x, this.loc.y + 20)
       }else if (direction === 4){//left
-        this.loc = createVector(this.loc.x - 10, this.loc.y)
+        this.loc = createVector(this.loc.x - 20, this.loc.y)
       }
       snakeHeadx = this.loc.x;
       snakeHeady = this.loc.y;

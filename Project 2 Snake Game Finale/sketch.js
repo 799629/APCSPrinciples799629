@@ -54,7 +54,7 @@ function startGame(){
 function runGame(){
   console.log(snakeArray);
   var oldScore = score;
-  for(var j = snakeArray.length - 1; j > -1; j--){
+  for(var j = snakeArray.length - 1; j > -.1; j--){
     snakeArray[j].run()
   }//end for loop
   food.run()
